@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+/* Ini-import ang Poppins font from Google Fonts para magamit sa design */
+
+@font-face{
+  font-family: Octuple; /* Pangalan na gagamitin para tawagin ang font */
+  src: url(Octuple.ttf); /* Location ng font file */
+}
+
+/* Defined CSS variables para mas madaling gamitin ulit ang colors at fonts */
+:root{
+  --light: #fffdd0;
+  --dark: #1b1a2a;
+  --gray: #32313f;
+  --yellow: #ffc100; 
+  --poppins: "Poppins", sans-serif; /* Default font variable */
+}
+
+/* Reset lahat ng default spacing ng browser */
+*{
+  margin: 0; /* Tinatanggal default margin */
+  padding: 0; /* Tinatanggal default padding */
+  box-sizing: border-box; /* Para hindi lumaki ang element kapag may padding */
+}
+
+html{
+  font-size: 62.5%; /* 1rem = 10px */
+  height: 100%;  /* Full height */
+}
+
+body{
+  font-family: var(--poppins); /* Default font */
+  font-size: 1.6rem; /* Default font size */
+  line-height: 1.4; /* Default line height */
+  overflow-x: hidden; /* Hide horizontal scroll-bar */
+  background-color: var(--dark); /* Default background color */
+}
+
+body::-webkit-scrollbar{
+  display: none; /* Hide scroll-bar */
+}
+
+a{
+  text-decoration: none; /* Tinatanggal ang underline ng links */
+}
+ul{ 
+  list-style: none; /* Tinatanggal ang bullets ng list */
+}
+img{
+  max-width: 100%; display: block; /* Para responsive ang images */
+}
+
+/* Container para ma-center content */
+.container{
+  margin: 0 auto; /* Center horizontally */
+  padding: 0 20rem; /* Top, Right, Left at Right padding */
+}
+/* Main container full width */
+.main_container{ 
+  width: 100%; /* Full width */
+}
+
+/* HEADER */
+header{
+  position: fixed; /* Fixed ang position, para di gumalaw kahit mag-scroll */
+  top: 0; /* Para sagad sa pinaka-taas */
+  width: 100%; /* Full width */
+  z-index: 999; /* Para nasa ibabaw ng ibang elements */
+  background-color: #1b213b; /* Background color ng header */
+  padding: 2rem 0;
+}
+
+.header_wrapper{
+  display: flex; /* Flex para mas madali ang styling*/
+  align-items: center; /* Vertical center */
+  justify-content: space-between; /* Para may space pagitan ang contents ng header*/
+}
+
+.header_left{
+  font-family: Octuple; /* Custom font */
+  display: flex; /* Flex para mas madali ang styling*/
+  align-items: center; /* Vertical center */
+  gap: 1rem; /* Spacing sa pagitan ng logo at text */
+}
+
+.header_left img{
+  border-radius: 50%; /* Para bilog ang image */
+  width: 6rem; /* Size ng logo */
+}
+
+.header_left h3{
+  font-size: 2rem; /* Size ng text */
+  color: var(--light); /* Color ng text*/
+}
+
+.header_nav{
+  display: flex; /* Flex para mas madali ang styling*/
+  gap: 5rem; /* Spacing ng links */
+}
+
+.header_nav a{
+  position: relative; /* Ginagawang reference point para ang absolute na underline ay dito mag-base */
+  font-size: 2rem; /* Size ng text */
+  color: var(--light); /* Color ng text*/
+  transition: color 0.3s ease; /* Para smooth ang transition ng color */
+}
+
+.header_nav a:after{
+  content: ""; /* Empty content para gumawa ng line */
+  position: absolute; /* Inaalis sa normal flow at pinoposition relative sa <a> */
+  height: 2px; /* Thickness ng line */
+  width: 100%; /* Full width */
+  left: 0; /* Simula sa left */
+  bottom: -8px; /* Para nasa ilalim ng text */
+  background-color: var(--yellow); /* Color ng underline */
+  transform: scaleX(0); /* Para nakatago muna ang underline */
+  transition: transform 0.3s ease; /* Para smooth ang animation */
+  transform-origin: right; /* Para sa right side pumunta ang animated line kapag di na naka-hover */
+}
+
+.header_nav a:hover{
+  color: var(--yellow); /* Color ng text kapag nag-hover */
+}
+
+.header_nav a:hover::after{
+  transform: scaleX(1); /* Para lumabas ang animated underline kapag nag-hover */
+  transform-origin: left; /* Para magsimula sa kaliwa ang animation */
+}
+
+.introduction, .welcome{
+  display: flex; /* Flex para mas madali ang styling*/
+  align-items: center; /* Vertical center */
+  min-height: 100vh; /* Full height */
+  width: 100%; /* Full width */
+  background-color: var(--dark); /* Color ng background */
+  padding-top: 8rem; /* Para hindi matakpan ng fixed header */
+}
+
+.intro_wrapper, .welcome_wrapper{
+  display: grid; /* Grid para hiwalay ang text at image */
+  grid-template-columns: 30rem 1fr; /* Sizing ng grid columns */
+  align-items: center; /* Vertical center */
+  gap: 10rem; /* Spacing sa pagitan ng text at image */
+}
+
+.welcome_wrapper{
+  grid-template-columns: 1fr 30rem; /* Para mauna ang text bago image */
+}
+
+.intro_left img, .welcome_right img{
+  width: 100%; /* Full width */
+  background: var(--gray); /* Color ng background */
+  padding: 1.5rem; /* Spacing sa gilid ng image */
+  border-radius: 2rem; /* Para rounded corners */
+}
+
+.intro_right, .welcome_left{
+  display: flex; /* Flex para mas madali ang styling */
+  flex-direction: column; /* Para vertical */
+  gap: 2rem; /* Spacing sa pagitan ng text */
+}
+
+.intro_right small, .welcome_left small{
+  color: var(--light); /* Para sa text color */
+  font-size: 2rem; /* Para sa text size */
+  font-weight: 500; /* Para medium bold */
+}
+
+.intro_right h1, .welcome_left small{
+  font-family: Octuple; /* Para gamitin ang custom font */
+  color: var(--light); /* Color ng text */
+  font-size: 3rem; /* Size ng text */
+}
+
+.intro_right p, .welcome_left p{
+  text-align: justify; /* Para pantay ang text sa gilid */
+  color: var(--light); /* Color ng text */
+  font-size: 2rem; /* Size ng text */
+}
